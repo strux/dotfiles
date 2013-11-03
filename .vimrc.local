@@ -1,0 +1,41 @@
+set ts=2 sts=2 sw=2 expandtab
+set diffopt=vertical
+set clipboard=unnamed
+set autoread
+set updatetime=5000  " millisecond"
+set nu
+let mapleader = ","
+nmap <leader>v :tabedit ~/.vimrc.local<CR>
+map <Leader>d :NERDTreeToggle<CR>
+map <leader>D :NERDTree 
+map <Leader>r <ESC>:w<CR>:!ruby "%"<CR>
+map <Leader>b <ESC>:w<CR>:!bash "%"<CR>
+map <Leader>j :join<CR>
+
+" NERDTree
+let NERDTreeIgnore = ['\.DS_Store', '\.idea', '\.git']
+
+if has('autocmd')
+  " Source .vimrc when I write it.  The nested keyword allows
+  " autocommand ColorScheme to fire when sourcing ~/.vimrc.
+  au! BufWritePost .vimrc.local nested source %
+endif
+
+" Tabs
+map <C-l> gt
+map <C-h> gT
+map <C-n> <Esc>:tabnew<CR>
+
+" Windows
+map <S-k> <C-w><Up> 
+map <S-j> <C-w><Down> 
+map <S-h> <C-w><Left> 
+map <S-l> <C-w><Right> 
+
+" Window sizing with ALT+hjkl
+map ¬ :vertical resize +5<CR>
+map ˙ :vertical resize -5<CR>
+map ˚ :resize +5<CR>
+map ∆ :resize -5<CR>
+
+
