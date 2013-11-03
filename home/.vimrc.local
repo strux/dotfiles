@@ -38,4 +38,5 @@ map ˙ :vertical resize -5<CR>
 map ˚ :resize +5<CR>
 map ∆ :resize -5<CR>
 
-
+" Colors
+let g:solarized_termcolors=256
