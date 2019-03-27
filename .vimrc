@@ -20,7 +20,8 @@ call vundle#begin()
   Plugin 'Valloric/YouCompleteMe'
   Plugin 'ternjs/tern_for_vim'
   Plugin 'nelstrom/vim-visual-star-search'
-  Plugin 'isRuslan/vim-es6'
+"  Plugin 'isRuslan/vim-es6'
+  Plugin 'sheerun/vim-polyglot'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -45,10 +46,12 @@ set spell spelllang=en_us
 set mouse=a
 set nowrap
 set clipboard=unnamed
+set nofixendofline
 " Comma separated patterns to be ignored in globs. Applies to crlp results
-set wildignore+=*/generated/*
+set wildignore+=*/generated/*,*/node_modules/*,*/target/*
 
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:30'
+let g:ctrlp_show_hidden = 1
 
 syntax enable
 set background=dark
@@ -70,6 +73,8 @@ map <Leader>j :join<CR>
 map <leader>p <ESC>:set paste<CR>"*P<ESC>:set nopaste<CR>
 map <leader>cp :let @*=@%<CR>
 map <Leader>r <ESC>:e!<CR>
+"commane line
+map <leader>/ <ESC>^i// <ESC>
 
 " Popup navigation
 inoremap <expr> <c-k> pumvisible()?"\<Up>":"\<c-k>"
