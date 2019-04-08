@@ -34,7 +34,7 @@ set incsearch
 set smartcase
 set ignorecase " ignore case in search
 set autoread
-set diffopt=vertical
+set diffopt=vertical,iwhite
 set modelines=1
 set laststatus=2 " required for airline
 set backupdir=~/.vim/backup//
@@ -52,6 +52,8 @@ set wildignore+=*/generated/*,*/node_modules/*,*/target/*
 
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:30'
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git'
+set shell=/bin/bash
 
 syntax enable
 set background=dark
