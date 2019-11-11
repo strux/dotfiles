@@ -20,11 +20,11 @@ call vundle#begin()
   Plugin 'Valloric/YouCompleteMe'
   Plugin 'ternjs/tern_for_vim'
   Plugin 'nelstrom/vim-visual-star-search'
-"  Plugin 'isRuslan/vim-es6'
   Plugin 'sheerun/vim-polyglot'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+set relativenumber
 set number
 set ts=2 sts=2 sw=2 expandtab
 set visualbell
@@ -40,6 +40,7 @@ set laststatus=2 " required for airline
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
+set undofile " maintain edit history across sessions
 set list
 set listchars=tab:▸\ ,trail:.
 set spell spelllang=en_us
@@ -81,6 +82,9 @@ map <leader>/ <ESC>^i// <ESC>
 " Popup navigation
 inoremap <expr> <c-k> pumvisible()?"\<Up>":"\<c-k>"
 inoremap <expr> <c-j> pumvisible()?"\<Down>":"\<c-j>"
+
+" Ctags
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 "-------------------------
 " Bash
@@ -182,4 +186,11 @@ if has('autocmd')
   " autocommand ColorScheme to fire when sourcing ~/.vimrc.
   au! BufWritePost .vimrc nested source %
 endif
+
+"=========================
+" ES Lint
+"=========================
+map <leader>ld <ESC>ggi/* eslint-disable */<CR><ESC>g;g;
+map <leader>ldd <ESC>ggddg;g;
+map <leader>ldl <ESC>O// eslint-disable-next-line<ESC>j
 

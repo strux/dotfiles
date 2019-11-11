@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+orig_window=`tmux display-message -p "#{window_index}"`
+orig_pane=`tmux display-message -p "#{pane_index}"`
+
+tmux select-window -t 2
+
+tmux select-pane -t 3
+tmux send-keys C-c Enter "yarn && yarn start" Enter
+
+tmux select-pane -t 4
+tmux send-keys C-c Enter "yarn && yarn start" Enter
+
+tmux select-window -t $orig_window
+tmux select-pane -t $orig_pane
