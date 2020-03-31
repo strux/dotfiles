@@ -21,6 +21,7 @@ call vundle#begin()
   Plugin 'ternjs/tern_for_vim'
   Plugin 'nelstrom/vim-visual-star-search'
   Plugin 'sheerun/vim-polyglot'
+  Plugin 'will133/vim-dirdiff'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -76,6 +77,9 @@ map <Leader>j :join<CR>
 map <leader>p <ESC>:set paste<CR>"*P<ESC>:set nopaste<CR>
 map <leader>cp :let @*=@%<CR>
 map <Leader>r <ESC>:e!<CR>
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
 "commane line
 map <leader>/ <ESC>^i// <ESC>
 
