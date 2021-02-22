@@ -1,4 +1,11 @@
 "=========================
+" Reminders
+"=========================
+"
+" z - Top of screen
+" z. - Center of screen
+
+"=========================
 " Vundle Plugins
 "=========================
 set nocompatible              " be iMproved, required
@@ -8,7 +15,7 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   Plugin 'gmarik/Vundle.vim'
-  Plugin 'kien/ctrlp.vim'
+  "Plugin 'kien/ctrlp.vim'
   Plugin 'scrooloose/nerdtree'
   Plugin 'tpope/vim-surround'
   Plugin 'tpope/vim-unimpaired'
@@ -22,6 +29,8 @@ call vundle#begin()
   Plugin 'nelstrom/vim-visual-star-search'
   Plugin 'sheerun/vim-polyglot'
   Plugin 'will133/vim-dirdiff'
+  Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plugin 'junegunn/fzf.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -52,10 +61,7 @@ set nofixendofline
 " Comma separated patterns to be ignored in globs. Applies to crlp results
 set wildignore+=*/generated/*,*/node_modules/*,*/target/*
 
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:30'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git'
-set shell=/bin/bash
+set shell=/bin/zsh
 
 syntax enable
 set background=dark
@@ -101,6 +107,11 @@ map <Leader>b <ESC>:w<CR>:!bash "%"<CR>
 map <Leader>ru <ESC>:w<CR>:!ruby "%"<CR>
 
 "-------------------------
+" FZF
+"-------------------------
+nmap <C-p> :GFiles<CR>
+
+"-------------------------
 " NERDTree
 "-------------------------
 function! ToggleNERDTreeFind()
@@ -113,6 +124,7 @@ endfunction
 
 let NERDTreeIgnore = ['\.DS_Store', '\.idea', '\.git']
 let NERDTreeQuitOnOpen = 1
+let g:NERDTreeWinSize=40
 map <Leader>d :call ToggleNERDTreeFind()<CR>
 map <Leader>D :NERDTreeToggle<CR>
 
@@ -147,6 +159,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 "-------------------------
 map <Leader>f <ESC>:tabnew<CR>:Ag 
 map <Leader>F <ESC>:Ag 
+map <Leader>fr <ESC>:tabnew<CR>:Ag -G 'reactapps\/' 
 map <Leader>fs <ESC>:tabnew<CR>:AgFromSearch<CR>
 
 "-------------------------
@@ -198,3 +211,5 @@ map <leader>ld <ESC>ggi/* eslint-disable */<CR><ESC>g;g;
 map <leader>ldd <ESC>ggddg;g;
 map <leader>ldl <ESC>O// eslint-disable-next-line<ESC>j
 
+
+:command EntryToAttr execute "normal! ^f:d/[^\s]r=f,x:s/'/\"/g"
