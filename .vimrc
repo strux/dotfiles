@@ -15,7 +15,6 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   Plugin 'gmarik/Vundle.vim'
-  "Plugin 'kien/ctrlp.vim'
   Plugin 'scrooloose/nerdtree'
   Plugin 'tpope/vim-surround'
   Plugin 'tpope/vim-unimpaired'
@@ -107,9 +106,14 @@ map <Leader>b <ESC>:w<CR>:!bash "%"<CR>
 map <Leader>ru <ESC>:w<CR>:!ruby "%"<CR>
 
 "-------------------------
+" Node
+"-------------------------
+map <Leader>en <ESC>:w<CR>:!node "%"<CR>
+
+"-------------------------
 " FZF
 "-------------------------
-nmap <C-p> :GFiles<CR>
+nmap <C-p> :GFiles --others --cached --exclude-standard<CR>
 
 "-------------------------
 " NERDTree
