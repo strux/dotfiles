@@ -2,8 +2,8 @@
 " Reminders
 "=========================
 "
-" z - Top of screen
-" z. - Center of screen
+" z<CR> - Top of screen
+" z.<CR> - Center of screen
 
 "=========================
 " Vundle Plugins
@@ -161,8 +161,8 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 "-------------------------
 " Ag
 "-------------------------
-map <Leader>f <ESC>:tabnew<CR>:Ag 
-map <Leader>F <ESC>:Ag 
+map <Leader>f <ESC>:tabnew<CR>:Ag -Q ''<Left>
+map <Leader>F <ESC>:Ag -Q ''<Left>
 map <Leader>fr <ESC>:tabnew<CR>:Ag -G 'reactapps\/' 
 map <Leader>fs <ESC>:tabnew<CR>:AgFromSearch<CR>
 
@@ -174,11 +174,18 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 
 "-------------------------
-" Tabs and Windows
+" Buffers, Tabs and Windows
 "-------------------------
+" Buffers
+:nnoremap <Leader>b :buffers<CR>:buffer<Space>
+
 " Tabs
 map <C-l> gt
 map <C-h> gT
+map <Leader>t :tabnew<CR>
+map <Leader>q :tabclose<CR>
+map <Leader>q! :tabclose!<CR>
+map <Leader>wq :windo wq<CR>
 
 " Windows
 map <S-k> <C-w><Up>
