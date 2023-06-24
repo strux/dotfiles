@@ -126,7 +126,7 @@ function! ToggleNERDTreeFind()
     endif
 endfunction
 
-let NERDTreeIgnore = ['\.DS_Store', '\.idea', '\.git']
+let NERDTreeIgnore = ['\.DS_Store', '\.idea', '\.git$']
 let NERDTreeQuitOnOpen = 1
 let g:NERDTreeWinSize=40
 map <Leader>d :call ToggleNERDTreeFind()<CR>
@@ -169,6 +169,7 @@ map <Leader>fs <ESC>:tabnew<CR>:AgFromSearch<CR>
 "-------------------------
 " YouCompleteMe
 "-------------------------
+let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
